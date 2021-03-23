@@ -224,41 +224,7 @@ Resources:
           DATA_CAPTURE_URI: !Sub s3://sagemaker-${AWS::Region}-${AWS::AccountId}/${ModelName}/datacapture
       Description: "Perform checks post-shifting traffic to lambda"
 
-  SagemakerMonitoringSchedule:
-    Type: AWS::SageMaker::MonitoringSchedule
-    Properties:
-      EndpointName: !GetAtt Endpoint.EndpointName
-      MonitoringScheduleConfig:
-        MonitoringJobDefinition:
-          BaselineConfig:
-            ConstraintsResource:
-              S3Uri: !Sub s3://sagemaker-${AWS::Region}-${AWS::AccountId}/${ModelName}/monitoring/baseline/mlops-${ModelName}-pbl-${TrainJobId}/constraints.json
-            StatisticsResource:
-              S3Uri: !Sub s3://sagemaker-${AWS::Region}-${AWS::AccountId}/${ModelName}/monitoring/baseline/mlops-${ModelName}-pbl-${TrainJobId}/statistics.json
-          MonitoringAppSpecification:
-            ImageUri:
-              !FindInMap [ModelAnalyzerMap, !Ref "AWS::Region", "ImageUri"]
-          MonitoringInputs:
-            - EndpointInput:
-                EndpointName: !GetAtt Endpoint.EndpointName
-                LocalPath: "/opt/ml/processing/endpointdata"
-          MonitoringOutputConfig:
-            MonitoringOutputs:
-              - S3Output:
-                  LocalPath: "/opt/ml/processing/localpath"
-                  S3Uri: !Sub s3://sagemaker-${AWS::Region}-${AWS::AccountId}/${ModelName}/monitoring/reports
-          MonitoringResources:
-            ClusterConfig:
-              InstanceCount: 1
-              InstanceType: ml.m5.xlarge
-              VolumeKmsKeyId: !Ref KmsKeyId
-              VolumeSizeInGB: 30
-          RoleArn: !Ref DeployRoleArn
-          StoppingCondition:
-            MaxRuntimeInSeconds: 1800
-        ScheduleConfig:
-          ScheduleExpression: "cron(0 * ? * * *)"
-      MonitoringScheduleName: !Sub mlops-${ModelName}-pms
+  
 
   SagemakerScheduleAlarm:
     Type: "AWS::CloudWatch::Alarm"
