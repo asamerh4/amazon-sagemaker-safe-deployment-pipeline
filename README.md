@@ -40,13 +40,13 @@ Create your AWS account at [http://aws.amazon.com](http://aws.amazon.com) by fol
  
 1. [Fork](https://github.com/aws-samples/sagemaker-safe-deployment-pipeline/fork) a copy of this repository into your own GitHub account by clicking the **Fork** in the upper right-hand corner.
 2. Follow the steps in the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to create a new (OAuth 2) token with the following scopes (permissions): `admin:repo_hook` and `repo`. If you already have a token with these permissions, you can use that. You can find a list of all your personal access tokens in [https://github.com/settings/tokens](https://github.com/settings/tokens).  
-3. Copy the access token to your clipboard. For security reasons, after you navigate off the page, you will not be able to see the token again.  If you have lost your token, you can [regenerate](https://docs.aws.amazon.com/codepipeline/latest/userguide/GitHub-authentication.html#GitHub-rotate-personal-token-CLI) your token.
+3. Copy the access token to your clipboard. For security reasons, after you navigate off the page, you will not be able to see the token again.  If you have lost your token, you can [regenerate](https://docs.aws.amazon.com/codepipeline/latest/userguide/GitHub-authentication.html#GitHub-rotate-personal-token-CLI) your token. (23ad1347e68067ded98720c0a0b3e38596c544f8)
 
 ###  Launch the AWS CloudFormation Stack
 
 Click on the **Launch Stack** button below to launch the CloudFormation Stack to set up the SageMaker safe deployment pipeline.
 
-[![Launch CFN stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateUrl=https%3A%2F%2Famazon-sagemaker-safe-deployment-pipeline.s3.amazonaws.com%2Fsfn%2Fpipeline.yml&stackName=nyctaxi&param_GitHubBranch=master&param_GitHubRepo=amazon-sagemaker-safe-deployment-pipeline&param_GitHubUser=aws-samples&param_ModelName=nyctaxi&param_NotebookInstanceType=ml.t3.medium)
+[![Launch CFN stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/quickcreate?templateUrl=https%3A%2F%2Famazon-sagemaker-safe-deployment-pipeline.s3.amazonaws.com%2Fsfn%2Fpipeline.yml&stackName=nyctaxi&param_GitHubBranch=master&param_GitHubRepo=amazon-sagemaker-safe-deployment-pipeline&param_GitHubUser=aws-samples&param_ModelName=nyctaxi&param_NotebookInstanceType=ml.t3.medium)
 
 Provide a stack name eg **sagemaker-safe-deployment-pipeline** and specify the parameters.
 
